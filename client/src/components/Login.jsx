@@ -41,12 +41,15 @@ const Login = () => {
   };
 
   return (
-    <div className='w-screen h-screen flex'  style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
-      <div className='w-1/2 h-full flex items-center justify-center p-10 bg-black bg-opacity-50'>
+    <div className='w-screen h-screen flex flex-col lg:flex-row roboto-bold text-white' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <div className='lg:w-1/2 w-full h-full flex items-center justify-center gap-10 p-10 bg-black bg-opacity-50 text-white font-bold'>
+      <div className='flex flex-col gap-10 items-center lg:items-start'>
+        <h1 className='text-8xl'>Hardhat</h1>
+        <h1 className='text-4xl'>Any job. Anywhere. Anytime.</h1>
       </div>
-
-      <div className='w-1/2 h-full flex items-center justify-center p-10 bg-black bg-opacity-50'>
-        <Form className='w-[500px] p-10 border-black rounded-lg bg-orange-500 flex flex-col items-center gap-4 font-bold' noValidate validated={validated} onSubmit={handleFormSubmit}>
+      </div>
+      <div className='lg:w-1/2 w-full h-full flex items-center justify-center p-10 bg-black bg-opacity-50'>
+        <Form className='w-[500px] p-10 rounded-lg bg-orange-500 flex flex-col items-center gap-4' noValidate validated={validated} onSubmit={handleFormSubmit}>
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Something went wrong with your login credentials!
           </Alert>
@@ -59,7 +62,7 @@ const Login = () => {
               onChange={handleInputChange}
               value={userFormData.email}
               required
-              className='w-[300px]'
+              className='w-[400px]'
             />
             <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
           </Form.Group>
@@ -71,7 +74,7 @@ const Login = () => {
               onChange={handleInputChange}
               value={userFormData.password}
               required
-              className='w-[300px]'
+              className='w-[400px]'
             />
             <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
           </Form.Group>
