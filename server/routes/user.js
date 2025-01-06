@@ -1,5 +1,5 @@
 import express from "express";
-const bcrypt = require('bcrypt');
+import bcrypt from "bcrypt";
 import db from "../db/connection.js";
 
 // This help convert the id from string to ObjectId for the _id.
