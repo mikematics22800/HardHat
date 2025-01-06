@@ -17,17 +17,22 @@ router.get("/", async (req, res) => {
   res.send(results).status(200);
 });
 
-// This section will help you get a single user by id
+// Get a single user by id
 router.get("/:id", async (req, res) => {
   let collection = await db.collection("users");
   let query = { _id: new ObjectId(req.params.id) };
   let result = await collection.findOne(query);
-  if (!result) res.send("User not found.").status(404);
-  if (!bcrypt.compare(req.body.password, user.password)) res.send("Invalid password.").status(404);
-  else res.send(result).status(200);
+  if (!result) {
+    res.send("User not found.").status(404);
+  } else if (!bcrypt.compare(req.body.password, result.password)) {
+    res.send("Invalid password.").status(404);
+  } else {
+    const token = signToken(result); // Generate token
+    res.send({ user: result, token }).status(200); // Send user and token
+  }
 });
-zß
-// This section will help you create a new user.
+
+// Create new user
 router.post("/", async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -38,10 +43,11 @@ router.post("/", async (req, res) => {
     };
     let collection = await db.collection("users");
     let result = await collection.insertOne(newDocument);
-    res.send(result).status(204);
+    const token = signToken(newDocument); // Generate token
+    res.send({ result, token }).status(204); // Send result and token
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error adding user");
+    res.status(500).send("Error creating user.");
   }
 });
 
@@ -63,7 +69,7 @@ router.patch("/:id", async (req, res) => {
     res.send(result).status(200);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error updating user");
+    res.status(500).send("Error updating user.");
   }
 });
 
@@ -77,7 +83,7 @@ router.delete("/:id", async (req, res) => {
     res.send(result).status(200);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error deleting user");
+    res.status(500).send("Error deleting user.");
   }
 });
 
