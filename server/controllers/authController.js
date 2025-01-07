@@ -125,9 +125,10 @@ export const resetPassword = async (req, res) => {
     user.password = hashedPassword;
     user.resetPasswordToken = null;
     user.resetTokenExpiration = null;
+   
     await user.save();
  
-    await sendResetSuccessEmail(user.email);
+    await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
 
     res.status(200).json({ message: 'Password reset successful.' });
   } catch (error) {
@@ -150,7 +151,8 @@ export const checkAuth = async (req, res) => {
       }
     });
   } catch (error) {
-    
+    console.log("Error in checkAuth ", error);
+		res.status(400).json({ message: error.message });
   }
 }
 

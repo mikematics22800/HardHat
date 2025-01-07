@@ -44,7 +44,7 @@ const Login = () => {
           />
 
           <div className='flex items-center mb-6'>
-            <Link to='/forgot-password' className='text-sm text-yellow-400 hover:underline'>
+            <Link to='/forgot-password' className='text-sm text-yellow-400 hover:underline font-bold'>
               Forgot password?
             </Link>
           </div>
@@ -53,7 +53,7 @@ const Login = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className='w-full py-3 px-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white font-bold rounded-lg shadow-lg hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
+            className='w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-orange-600 text-white font-bold rounded-lg shadow-lg hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
             type='submit'
             disabled={isLoading}
           >
@@ -64,7 +64,7 @@ const Login = () => {
       <div className='px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center'>
         <p className='text-sm text-gray-400'>
           Don't have an account?{" "}
-          <Link to='/register' className='text-yellow-400 hover:underline'>
+          <Link to='/register' className='text-yellow-400 hover:underline font-bold'>
             Register!
           </Link>
         </p>

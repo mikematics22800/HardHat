@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = import.meta.env.MODE === "development" ? "http://localhost:5000/api/auth" : "/api/auth";
+const API_URL = import.meta.env.MODE === "development" ? "http://localhost:3000/auth" : "/auth";
 
 axios.defaults.withCredentials = true;
 
@@ -19,7 +19,7 @@ export const useAuthStore = create((set) => ({
 			const response = await axios.post(`${API_URL}/register`, { email, password, name });
 			set({ user: response.data.user, isAuthenticated: true, isLoading: false });
 		} catch (error) {
-			set({ error: error.response.data.message || "Error signing up", isLoading: false });
+			set({ error: error.message || "Registration error", isLoading: false });
 			throw error;
 		}
 	},
@@ -34,7 +34,7 @@ export const useAuthStore = create((set) => ({
 				isLoading: false,
 			});
 		} catch (error) {
-			set({ error: error.response?.data?.message || "Error logging in", isLoading: false });
+			set({ error: error.response?.data?.message || "Login error", isLoading: false });
 			throw error;
 		}
 	},
@@ -45,7 +45,7 @@ export const useAuthStore = create((set) => ({
 			await axios.post(`${API_URL}/logout`);
 			set({ user: null, isAuthenticated: false, error: null, isLoading: false });
 		} catch (error) {
-			set({ error: "Error logging out", isLoading: false });
+			set({ error: "Logout error", isLoading: false });
 			throw error;
 		}
 	},

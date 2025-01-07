@@ -17,9 +17,12 @@ const Register = () => {
 
 	const handleRegister = async (e) => {
 		e.preventDefault();
+    console.log(email, password, name);
 
 		try {
-			await register(email, password, name);
+			await register(email, password, name).then((res) => {
+        console.log(res);
+      });
 			navigate("/verify-email");
 		} catch (error) {
 			console.log(error);
@@ -55,13 +58,13 @@ const Register = () => {
             type='password'
             placeholder='Password'
             value={password}
+            minLength={8}
             onChange={(e) => setPassword(e.target.value)}
           />
           {error && <p className='text-red-500 font-semibold mt-2'>{error}</p>}
           <PasswordMeter password={password} />
-
           <motion.button
-            className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-yellow-500 to-orange-600 text-white 
+            className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-orange-600 text-white 
             font-bold rounded-lg shadow-lg hover:from-yellow-600
             hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2
             focus:ring-offset-gray-900 transition duration-200'
@@ -70,14 +73,14 @@ const Register = () => {
             type='submit'
             disabled={isLoading}
           >
-            {isLoading ? <Loader className=' animate-spin mx-auto' size={24} /> : "Sign Up"}
+            {isLoading ? <Loader className='animate-spin mx-auto' size={24} /> : "Register"}
           </motion.button>
         </form>
       </div>
       <div className='px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center'>
         <p className='text-sm text-gray-400'>
           Already have an account?{" "}
-          <Link to={"/login"} className='text-yellow-400 hover:underline'>
+          <Link to={"/login"} className='text-yellow-400 hover:underline font-bold'>
             Log In!
           </Link>
         </p>

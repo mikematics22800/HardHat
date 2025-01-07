@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
-    <div className="">
+    <div className="app">
       <Outlet />
     </div>
   );

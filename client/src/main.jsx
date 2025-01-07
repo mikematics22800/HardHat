@@ -7,6 +7,7 @@ import {
 import App from "./App";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import VerifyEmail from "./pages/VerifyEmail";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -34,6 +35,16 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/verify-email',
+    element: <App/>,
+    children: [
+      {
+        path: '/verify-email',
+        element: <VerifyEmail />
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
