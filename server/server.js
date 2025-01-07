@@ -1,15 +1,18 @@
 import express from "express";
 import cors from "cors";
-import users from "./routes/users.js";
-import { authMiddleware } from "./utils/auth.js"; 
+import auth from "./routes/auth.js";
+import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
-const PORT = process.env.PORT || 5050;
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(authMiddleware);
-app.use("/api/users", users);
+app.use(cookieParser());
+app.use("/auth", auth);
 
 // start the Express server
 app.listen(PORT, () => {

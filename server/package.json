@@ -12,10 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "express": "^4.17.2",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "graphql": "^16.6.0",
     "jsonwebtoken": "^8.5.1",
+    "mailtrap": "^3.4.0",
     "mongoose": "^8.0.0"
   },
   "devDependencies": {
