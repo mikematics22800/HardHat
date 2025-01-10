@@ -61,10 +61,10 @@ const Register = () => {
             minLength={8}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {error && <p className='text-red-500 font-semibold mt-2'>{error}</p>}
+          {error && <p className='text-red-500 font-bold'>Registration failed.</p>}
           <PasswordMeter password={password} />
           <motion.button
-            className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-orange-600 text-white 
+            className='mt-4 w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-orange-600 text-white 
             font-bold rounded-lg shadow-lg hover:from-yellow-600
             hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2
             focus:ring-offset-gray-900 transition duration-200'
@@ -77,7 +77,7 @@ const Register = () => {
           </motion.button>
         </form>
       </div>
-      <div className='px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center'>
+      <div className='py-4 px-8 bg-gray-900 bg-opacity-50 flex justify-center'>
         <p className='text-sm text-gray-400'>
           Already have an account?{" "}
           <Link to={"/login"} className='text-yellow-400 hover:underline font-bold'>

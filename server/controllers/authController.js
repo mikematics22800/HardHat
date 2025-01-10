@@ -14,7 +14,7 @@ export const register = async (req, res) => {
     }
     const userAlreadyExists = await User.findOne({email})
     if (userAlreadyExists) {
-      return res.status(400).json({ message: 'User already exists.' });
+      return res.status(400).json({ message: 'User with this email already exists.' });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
@@ -47,6 +47,7 @@ export const register = async (req, res) => {
     }) 
   } catch (error) {
     res.status(400).json({ message: error.message });
+    console.error(error)
   }
 } 
 
@@ -70,6 +71,7 @@ export const login = async (req, res) => {
     })
   } catch (error) {
     res.status(400).json({ message: error.message });
+    console.error(error)
   }
 }
  
@@ -104,6 +106,7 @@ export const verifyEmail = async (req, res) => {
     });
   } catch (error) {
     res.status(400).json({ message: error.message });
+    console.error(error)
   }
 }
 
@@ -133,6 +136,7 @@ export const resetPassword = async (req, res) => {
     res.status(200).json({ message: 'Password reset successful.' });
   } catch (error) {
     res.status(400).json({ message: error.message });
+    console.error(error)
   }
 }
 
@@ -151,7 +155,7 @@ export const checkAuth = async (req, res) => {
       }
     });
   } catch (error) {
-    console.log("Error in checkAuth ", error);
+    console.error(error);
 		res.status(400).json({ message: error.message });
   }
 }

@@ -48,7 +48,7 @@ const Login = () => {
               Forgot password?
             </Link>
           </div>
-          {error && <p className='text-red-500 font-semibold mb-2'>{error}</p>}
+          {error && <p className='text-red-500 font-semibold mb-2'>Invalid email or password.</p>}
 
           <motion.button
             whileHover={{ scale: 1.02 }}

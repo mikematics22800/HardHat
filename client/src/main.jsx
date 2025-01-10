@@ -13,7 +13,7 @@ import "./index.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Navigate to="/login" />, 
   },
   {
     path: '/login',
