@@ -1,4 +1,3 @@
-import Input from "../components/Input";
 import { Loader, Lock, Mail, User } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,6 +5,7 @@ import PasswordMeter from "../components/PasswordMeter";
 import { useAuthStore } from "../store/authStore";
 import hardhat from '../assets/hard-hat.png';
 import { motion } from "framer-motion";
+import Input from "../components/Input";
 
 const Register = () => {
 	const [name, setName] = useState("");
@@ -49,7 +49,7 @@ const Register = () => {
           <Input
             icon={Mail}
             type='email'
-            placeholder='Email Address'
+            placeholder='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

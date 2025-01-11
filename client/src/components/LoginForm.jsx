@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Input from "../components/Input";
 import hardhat from '../assets/hard-hat.png';
 import { Link } from 'react-router-dom';
 import { Mail, Lock, Loader } from "lucide-react";
 import { useAuthStore } from "../store/authStore";
 import { motion } from "framer-motion";
+import Input from "../components/Input";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,11 +30,10 @@ const Login = () => {
           <Input
             icon={Mail}
             type='email'
-            placeholder='Email Address'
+            placeholder='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-
           <Input
             icon={Lock}
             type='password'
